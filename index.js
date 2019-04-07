@@ -50,9 +50,13 @@ parseTypescript(typescript).then(tsParsed => {
   ejsData.functionTests = Object.assign({}, ejsData.functionTests, existingItBlocks);
 
   const generated = ejs.render(ejsTemplate, ejsData).replace(/\n\s+$/gm, '\n');
-  
-  fs.existsSync(specFilePath) && util.createBackupFile(specFilePath);
-  fs.writeFileSync(specFilePath, generated);
-  console.log('Generated unit test for', argv._[0], 'to', specFilePath);
+ 
+  if(fs.existsSync(specFilePath)) {
+    util.createBackupFile(specFilePath, generated); 
+
+  } else {
+    fs.writeFileSync(specFilePath, generated);
+    console.log('Generated unit test for', argv._[0], 'to', specFilePath);   
+  }
   
 });

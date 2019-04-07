@@ -49,11 +49,11 @@ function reIndent(str, prefix="") {
   return str.replace(regExp, "\n" + prefix);
 }
 
-function createBackupFile(filePath) {
-  const ext = (new Date()).toISOString().replace(/[^\d]/g,'').slice(0, -9);
-  const contents = fs.readFileSync(filePath, 'utf8');
+function createBackupFile(filePath, generated) {
+  const ext = (new Date()).toISOString().replace(/[^\d]/g,'');
   let fileName = filePath.replace('.ts','.'+ext+'.ts');
-  fs.writeFileSync(`${fileName}`, contents, 'utf8');
+  fs.writeFileSync(`${fileName}`, generated, 'utf8'); 
+  console.log('Generated unit test for', filePath, 'to', fileName);  
 }
 
 module.exports = {
