@@ -1,11 +1,8 @@
-// tslint:disable
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Injectable, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { By } from '@angular/platform-browser';
-// import { Observable } from 'rxjs/Observable';
-// import 'rxjs/add/observable/of';
-// import 'rxjs/add/observable/throw';
+import { Observable, of, from } from 'rxjs';
 
 import {Component, Directive, Inject, PLATFORM_ID} from '@angular/core';
 import {AppComponent} from './my.component';
@@ -14,21 +11,6 @@ import {CookieService} from './common/services/cookie.service';
 import {AppLoadService} from './framework/app-load.service';
 import {Router} from '@angular/router';
 import {CommonUtilsService} from './common/services/common-utils.service';
-
-@Injectable()
-class MockAuthGuardService { }
-
-@Injectable()
-class MockCookieService { }
-
-@Injectable()
-class MockAppLoadService { }
-
-@Injectable();
-class MockRouter { navigate = jest.fn(); }
-
-@Injectable()
-class MockCommonUtilsService { }
 
 describe('AppComponent', () => {
   let fixture;
@@ -82,3 +64,31 @@ describe('AppComponent', () => {
   });
 
 });
+
+export class MockAuthGuardService {
+  confirm(message, key, ok, cancel) {
+      return of(true);
+   }
+    }
+
+export class MockCookieService {
+  confirm(message, key, ok, cancel) {
+      return of(true);
+   }
+    }
+
+export class MockAppLoadService {
+  confirm(message, key, ok, cancel) {
+      return of(true);
+   }
+    }
+
+@Injectable();
+class MockRouter jasmine.createSpyObj('Router', ['navigateByUrl']);
+
+export class MockCommonUtilsService {
+  confirm(message, key, ok, cancel) {
+      return of(true);
+   }
+    }
+​
