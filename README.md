@@ -1,7 +1,7 @@
 #specgen
 Angular -  Jasmine Unit Testcase Spec file Generator
 
-This npm module helps to generate skeleton and basic coverage of unit test cases as spec file. Its saves development time spent in writing the angular unit test cases. 
+This npm module helps to generate the unit testcase spec file with its skeleton structure and basic coverage of unit test cases. Its saves development time spent in writing the angular basic unit test cases with coverage of 30 to 40%. 
 
 
 ## Install
