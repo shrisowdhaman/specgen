@@ -41,8 +41,8 @@ module.exports = function getServiceData(tsParsed, filePath) {
     result.functionTests[testName] = reIndent(`
       it('${testName}', async () => {
         // const spy = spyOn(service, '${m}');
-        // ${js};
-        // expect(service.'${m}').toHaveBeenCalled();
+        // service.${m}(${parameters});
+        // expect(service.${m}).toHaveBeenCalled();
       });
     `, '  ');
   }
