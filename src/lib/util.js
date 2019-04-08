@@ -51,7 +51,7 @@ function reIndent(str, prefix="") {
 
 function createBackupFile(filePath, generated) {
   const ext = (new Date()).toISOString().replace(/[^\d]/g,'');
-  let fileName = filePath.replace('.ts','.'+ext+'.ts');
+  let fileName = filePath.replace('spec.ts',+ext+'.spec.ts');
   fs.writeFileSync(`${fileName}`, generated, 'utf8'); 
   console.log('Generated unit test for', filePath, 'to', fileName);  
 }
