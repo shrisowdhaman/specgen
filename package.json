@@ -23,7 +23,7 @@
     "generate spec file",
     "unit test spec",
     "jasmine test spec",
-    "cli"
+    "karma"
   ],
   "author": "shrisowdhaman",
   "bugs": {
