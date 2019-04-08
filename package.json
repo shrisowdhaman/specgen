@@ -1,6 +1,6 @@
 {
   "name": "specgen",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Angular - Jasmine Unit Test Spec file Generator",
   "main": "index.js",
   "license": "MIT",
