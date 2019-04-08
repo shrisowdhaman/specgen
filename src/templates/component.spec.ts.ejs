@@ -3,6 +3,9 @@ import { Injectable, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { By } from '@angular/platform-browser';
 import { Observable, of, from } from 'rxjs';
+//import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+//import {HttpClient, HttpClientModule} from "@angular/common/http";
+//import {MissingTranslationHandler, TranslateLoader, TranslateModule, MissingTranslationHandlerParams, TranslateService} from "@ngx-translate/core";
 
 <% for(var key in imports) { -%>
 import {<%- imports[key].map(el => `${el}`).join(', ') -%>} from '<%- key -%>';
@@ -15,10 +18,23 @@ describe('<%= className %>', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+
+      /* imports: [
+      HttpClientModule, TranslateModule.forRoot({
+        missingTranslationHandler: {provide: MissingTranslationHandler, useClass: NbMissingTranslationHandler},
+        loader: {
+          provide: TranslateLoader,
+          useFactory: (http: HttpClient) => new TranslateHttpLoader(http, 'assets/i18n/lang/', '.json'),
+          deps: [HttpClient]
+        }
+      })
+    ], */
       declarations: [
         <%= className %>
       ],
-      providers: [<% for(var key in providers) { %>
+      providers: [
+      //TranslateService, TranslateLoader,
+        <% for(var key in providers) { %>
         <%- providers[key]+ ',' %><% } %>
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
@@ -37,8 +53,13 @@ describe('<%= className %>', () => {
   
 });
 
+/*
+export class NbMissingTranslationHandler implements MissingTranslationHandler {
+  handle(params: MissingTranslationHandlerParams) {
+    return 'not found-' + params;
+  }
+} */
 
 <% for(var key in mocks) { -%>
 <%- mocks[key] -%>
 <% } -%>
-​
