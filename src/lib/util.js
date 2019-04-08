@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path'); 
 
+// Get the filename based on @ atarting of file
 function getAngularType(typescript) {
   return typescript.match(/^@Component\(/m) ? 'Component': 
     typescript.match(/^@Directive\(/m) ? 'Directive': 
@@ -8,6 +9,7 @@ function getAngularType(typescript) {
     typescript.match(/^@Pipe\(/m) ? 'Pipe':  undefined;
 }
 
+// Get the ejb file template
 function getEjsTemplate(type) {
   let ejsFile; 
   switch(type) {
@@ -26,6 +28,7 @@ function getEjsTemplate(type) {
   return fs.readFileSync(ejsFile, 'utf8');
 }
 
+// import all the files in the converted file
 function getImportLib(mports, className) {
   let lib;
   mports.forEach(mport => {
